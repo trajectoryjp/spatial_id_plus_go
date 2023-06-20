@@ -68,8 +68,8 @@ func TestSpace01(t *testing.T) {
 //   - 戻り値の真偽値がtrueであること
 func TestIsCollideVoxel01(t *testing.T) {
 	//入力値
-	center := spatial.Point3{-19567.87924100512, 19567.78714071522, -32768}
-	lens := spatial.Vector3{39135.758482, 39135.758471, 65536}
+	center := spatial.Point3{X: -19567.87924100512, Y: 19567.78714071522, Z: -32768}
+	lens := spatial.Vector3{X: 39135.758482, Y: 39135.758471, Z: 65536}
 	radius := 4.0
 
 	// 期待値
@@ -105,8 +105,8 @@ func TestIsCollideVoxel01(t *testing.T) {
 //   - 戻り値の真偽値がfalseであること
 func TestIsCollideVoxel02(t *testing.T) {
 	//入力値
-	center := spatial.Point3{19567.879241005117, 58703.36144845117, 32768}
-	lens := spatial.Vector3{39135.758482, 39135.758471, 65536}
+	center := spatial.Point3{X: 19567.879241005117, Y: 58703.36144845117, Z: 32768}
+	lens := spatial.Vector3{X: 39135.758482, Y: 39135.758471, Z: 65536}
 	radius := 4.0
 
 	// 期待値
@@ -143,8 +143,8 @@ func TestIsCollideVoxel02(t *testing.T) {
 //   - 戻り値の真偽値がfalseであること
 func TestIsCollideVoxel03(t *testing.T) {
 	//入力値
-	center := spatial.Point3{-19567.87924100512, 19567.78714071522, -32768}
-	lens := spatial.Vector3{39135.758482, 39135.758471, 65536}
+	center := spatial.Point3{X: -19567.87924100512, Y: 19567.78714071522, Z: -32768}
+	lens := spatial.Vector3{X: 39135.758482, Y: 39135.758471, Z: 65536}
 
 	// 基底物理オブジェクト構造体
 	resultB := NewBasePhysics()

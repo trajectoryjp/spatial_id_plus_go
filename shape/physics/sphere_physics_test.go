@@ -25,7 +25,7 @@ import (
 func TestNewSpherePhysics01(t *testing.T) {
 	//入力値
 	radius := 4.0
-	center := spatial.Point3{-19567.87924100512, 19567.78714071522, -32768}
+	center := spatial.Point3{X: -19567.87924100512, Y: 19567.78714071522, Z: -32768}
 
 	// 基底物理オブジェクト構造体
 	expectB := NewBasePhysics()

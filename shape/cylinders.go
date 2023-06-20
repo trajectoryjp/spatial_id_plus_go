@@ -29,7 +29,7 @@ import (
 //
 //	projectedPointオブジェクト
 func convertSpatialProjectionPoint(point spatial.Point3) object.ProjectedPoint {
-	return object.ProjectedPoint{point.X, point.Y, point.Z}
+	return object.ProjectedPoint{X: point.X, Y: point.Y, Alt: point.Z}
 }
 
 // GetSpatialIDOnAxisIDs 軸IDから拡張空間ID取得
@@ -295,15 +295,15 @@ func (c Capsule) IsEmpty() bool {
 func (c Capsule) calcLineSpatialIDs() ([]string, []string, error) {
 
 	// 【直交座標空間】始点終点間の空間ID取得
-	lineSpatialIDs := []string{}
+	var lineSpatialIDs []string
 	// 【直交座標空間】内部空間用始点終点間の空間ID取得
 	// 	円柱かつ軸の長さが直径より小さい場合は内部空間用始点終点間の空間IDは空のままとする
 	insideLineSpatialIDs := []string{}
 	var err error
 
 	// Z成分をfactorで補正
-	start := spatial.Point3{c.start.X, c.start.Y, c.start.Z / c.factor}
-	end := spatial.Point3{c.end.X, c.end.Y, c.end.Z / c.factor}
+	start := spatial.Point3{X: c.start.X, Y: c.start.Y, Z: c.start.Z / c.factor}
+	end := spatial.Point3{X: c.end.X, Y: c.end.Y, Z: c.end.Z / c.factor}
 
 	// 球の場合
 	if c.isSphere {
@@ -354,9 +354,9 @@ func (c Capsule) calcLineSpatialIDs() ([]string, []string, error) {
 
 			// 処理を半径分短くした軸の線に対して行う
 			newStart := c.start.Translate(radiusAxis)
-			factorStart := spatial.Point3{newStart.X, newStart.Y, newStart.Z / c.factor}
+			factorStart := spatial.Point3{X: newStart.X, Y: newStart.Y, Z: newStart.Z / c.factor}
 			newEnd := c.end.Translate(radiusAxis.Scale(-1))
-			factorEnd := spatial.Point3{newEnd.X, newEnd.Y, newEnd.Z / c.factor}
+			factorEnd := spatial.Point3{X: newEnd.X, Y: newEnd.Y, Z: newEnd.Z / c.factor}
 
 			// 【直交座標空間⇒緯度経度空間】始点終点の座標
 			projectesStart := convertSpatialProjectionPoint(factorStart)
@@ -456,7 +456,7 @@ func (c *Capsule) calcCollideSpatialIDs() {
 	for _, excludeSpatialID := range excludeSpatialIDs {
 
 		// 【直交座標空間】ボクセルの対角線のベクトルを決定
-		lens := spatial.Vector3{}
+		var lens spatial.Vector3
 
 		lat := GetVoxelIDToSpatialID(excludeSpatialID)[1]
 		// 同一緯度のボクセルの対角線のベクトルが取得済みの場合
@@ -471,7 +471,7 @@ func (c *Capsule) calcCollideSpatialIDs() {
 		// 【直交座標空間】ボクセルの中心座標
 		centers, _ := shape.GetPointOnExtendedSpatialId(excludeSpatialID, enum.Center)
 		orthCenters, _ := shape.ConvertPointListToProjectedPointList(centers, consts.OrthCrs)
-		orthCenter := spatial.Point3{orthCenters[0].X, orthCenters[0].Y, orthCenters[0].Alt * c.factor}
+		orthCenter := spatial.Point3{X: orthCenters[0].X, Y: orthCenters[0].Y, Z: orthCenters[0].Alt * c.factor}
 		logger.Debug("ボクセルの中心座標: %f, %f, %f", orthCenter.X, orthCenter.Y, orthCenter.Z)
 
 		if c.object.IsCollideVoxel(orthCenter, lens) {

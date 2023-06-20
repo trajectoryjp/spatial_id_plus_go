@@ -26,8 +26,8 @@ import (
 func TestNewCapsulePhysics01(t *testing.T) {
 	//入力値
 	radius := 2.0
-	start := spatial.Point3{3, 5, 7}
-	end := spatial.Point3{-2, -5, 9}
+	start := spatial.Point3{X: 3, Y: 5, Z: 7}
+	end := spatial.Point3{X: -2, Y: -5, Z: 9}
 
 	// 比較用処理
 	axis := spatial.NewVectorFromPoints(start, end)
@@ -43,7 +43,7 @@ func TestNewCapsulePhysics01(t *testing.T) {
 	body.SetPosition(ode.NewVector3(center.X, center.Y, center.Z))
 	// 傾き設定
 	quat := spatial.RotateBetweenVector(
-		spatial.Vector3{0.0, 0.0, 1.0},
+		spatial.Vector3{X: 0.0, Y: 0.0, Z: 1.0},
 		axis,
 	)
 	body.SetQuaternion(ode.NewQuaternion(quat.W, quat.X, quat.Y, quat.Z))

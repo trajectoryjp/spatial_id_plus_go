@@ -39,7 +39,7 @@ func NewCylinderPhysics(radius float64, start spatial.Point3, end spatial.Point3
 	body.SetPosition(ode.NewVector3(center.X, center.Y, center.Z))
 	// 傾き設定
 	quat := spatial.RotateBetweenVector(
-		spatial.Vector3{0.0, 0.0, 1.0},
+		spatial.Vector3{X: 0.0, Y: 0.0, Z: 1.0},
 		axis,
 	)
 	body.SetQuaternion(ode.NewQuaternion(quat.W, quat.X, quat.Y, quat.Z))

@@ -26,9 +26,9 @@ import (
 //   - convertSpatialProjectionPoint Point3型オブジェクトからprojectedPoint型オブジェクトへ変換されること
 func TestConvertSpatialProjectionPoint01(t *testing.T) {
 	// Point3型オブジェクト
-	p := spatial.Point3{1.0, 2.0, 3.0}
+	p := spatial.Point3{X: 1.0, Y: 2.0, Z: 3.0}
 
-	expectVal := object.ProjectedPoint{1.0, 2.0, 3.0}
+	expectVal := object.ProjectedPoint{X: 1.0, Y: 2.0, Alt: 3.0}
 	resultVal := convertSpatialProjectionPoint(p)
 
 	//戻り値と期待値の比較
@@ -147,8 +147,8 @@ func TestGetVoxelIDToSpatialID01(t *testing.T) {
 //   - 入力値に対応する直方体構造体ポインタが返されること
 func TestNewRectangular01(t *testing.T) {
 	//入力パラメータ
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{5, 6, 7}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: 5, Y: 6, Z: 7}
 	radius := 2.0
 	hZoom := int64(2)
 	vZoom := int64(5)
@@ -192,8 +192,8 @@ func TestCalcUnitVoxelVector01(t *testing.T) {
 	// 拡張空間ID
 	spatialID := "25/200/29803148/25/0"
 	//初期化用入力パラメータ
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{4, 5, 6}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: 4, Y: 5, Z: 6}
 	radius := 2.0
 	hZoom := int64(2)
 	vZoom := int64(5)
@@ -273,8 +273,8 @@ func TestCalcUnitVoxelVector02(t *testing.T) {
 	// 拡張空間ID
 	spatialID := "25/200/29803148/25"
 	//初期化用入力パラメータ
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{4, 5, 6}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: 4, Y: 5, Z: 6}
 	radius := 2.0
 	hZoom := int64(2)
 	vZoom := int64(5)
@@ -313,8 +313,8 @@ func TestCalcUnitVoxelVector02(t *testing.T) {
 //   - 戻り値の型がsphereであること
 func TestNewCapsule01(t *testing.T) {
 	// 初期化用パラメータ
-	start := spatial.Point3{-1, -2, -3}
-	end := spatial.Point3{-1, -2, -3}
+	start := spatial.Point3{X: -1, Y: -2, Z: -3}
+	end := spatial.Point3{X: -1, Y: -2, Z: -3}
 	radius := 2.0
 	hZoom := int64(2)
 	vZoom := int64(5)
@@ -395,8 +395,8 @@ func TestNewCapsule01(t *testing.T) {
 //   - 衝突判定オブジェクトは入力値に関係なくインスタンス化のたびに値が変更されるため、比較の対象外とする
 func TestNewCapsule02(t *testing.T) {
 	// 初期化用パラメータ
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{4, 5, 6}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: 4, Y: 5, Z: 6}
 	radius := 2.0
 	hZoom := int64(2)
 	vZoom := int64(5)
@@ -478,8 +478,8 @@ func TestNewCapsule02(t *testing.T) {
 //   - 衝突判定オブジェクトは入力値に関係なくインスタンス化のたびに値が変更されるため、比較の対象外とする
 func TestNewCapsule03(t *testing.T) {
 	// 初期化用パラメータ
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{4, 5, 6}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: 4, Y: 5, Z: 6}
 	radius := 2.0
 	hZoom := int64(2)
 	vZoom := int64(5)
@@ -558,8 +558,8 @@ func TestNewCapsule03(t *testing.T) {
 //   - オブジェクトの状態に対応した真偽値(false)が返ってくること
 func TestIsEmpty01(t *testing.T) {
 	// 初期化用パラメータ
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{4, 5, 6}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: 4, Y: 5, Z: 6}
 	radius := 2.0
 	hZoom := int64(2)
 	vZoom := int64(5)
@@ -638,8 +638,8 @@ func TestCalcLineSpatialIDs01(t *testing.T) {
 		consts.OrthCrs,
 	)
 	//初期化用入力パラメータ
-	startOrth := spatial.Point3{crsPoints[0].X, crsPoints[0].Y, crsPoints[0].Alt}
-	endOrth := spatial.Point3{crsPoints[1].X, crsPoints[1].Y, crsPoints[1].Alt}
+	startOrth := spatial.Point3{X: crsPoints[0].X, Y: crsPoints[0].Y, Z: crsPoints[0].Alt}
+	endOrth := spatial.Point3{X: crsPoints[1].X, Y: crsPoints[1].Y, Z: crsPoints[1].Alt}
 	radius := 2.0
 	hZoom := int64(26)
 	vZoom := int64(27)
@@ -704,8 +704,8 @@ func TestCalcLineSpatialIDs02(t *testing.T) {
 		consts.OrthCrs,
 	)
 	//初期化用入力パラメータ
-	startOrth := spatial.Point3{crsPoints[0].X, crsPoints[0].Y, crsPoints[0].Alt}
-	endOrth := spatial.Point3{crsPoints[1].X, crsPoints[1].Y, crsPoints[1].Alt}
+	startOrth := spatial.Point3{X: crsPoints[0].X, Y: crsPoints[0].Y, Z: crsPoints[0].Alt}
+	endOrth := spatial.Point3{X: crsPoints[1].X, Y: crsPoints[1].Y, Z: crsPoints[1].Alt}
 	radius := 2.0
 	hZoom := int64(27)
 	vZoom := int64(26)
@@ -773,8 +773,8 @@ func TestCalcLineSpatialIDs03(t *testing.T) {
 		consts.OrthCrs,
 	)
 	//初期化用入力パラメータ
-	startOrth := spatial.Point3{crsPoints[0].X, crsPoints[0].Y, crsPoints[0].Alt}
-	endOrth := spatial.Point3{crsPoints[1].X, crsPoints[1].Y, crsPoints[1].Alt}
+	startOrth := spatial.Point3{X: crsPoints[0].X, Y: crsPoints[0].Y, Z: crsPoints[0].Alt}
+	endOrth := spatial.Point3{X: crsPoints[1].X, Y: crsPoints[1].Y, Z: crsPoints[1].Alt}
 	radius := 2.0
 	hZoom := int64(36)
 	vZoom := int64(25)
@@ -835,8 +835,8 @@ func TestCalcLineSpatialIDs04(t *testing.T) {
 		consts.OrthCrs,
 	)
 	//初期化用入力パラメータ
-	startOrth := spatial.Point3{crsPoints[0].X, crsPoints[0].Y, crsPoints[0].Alt}
-	endOrth := spatial.Point3{crsPoints[1].X, crsPoints[1].Y, crsPoints[1].Alt}
+	startOrth := spatial.Point3{X: crsPoints[0].X, Y: crsPoints[0].Y, Z: crsPoints[0].Alt}
+	endOrth := spatial.Point3{X: crsPoints[1].X, Y: crsPoints[1].Y, Z: crsPoints[1].Alt}
 	radius := 2.0
 	hZoom := int64(26)
 	vZoom := int64(27)
@@ -906,8 +906,8 @@ func TestCalcLineSpatialIDs05(t *testing.T) {
 		consts.OrthCrs,
 	)
 	//初期化用入力パラメータ
-	startOrth := spatial.Point3{crsPoints[0].X, crsPoints[0].Y, crsPoints[0].Alt}
-	endOrth := spatial.Point3{crsPoints[1].X, crsPoints[1].Y, crsPoints[1].Alt}
+	startOrth := spatial.Point3{X: crsPoints[0].X, Y: crsPoints[0].Y, Z: crsPoints[0].Alt}
+	endOrth := spatial.Point3{X: crsPoints[1].X, Y: crsPoints[1].Y, Z: crsPoints[1].Alt}
 	radius := 2.0
 	hZoom := int64(27)
 	vZoom := int64(26)
@@ -981,8 +981,8 @@ func TestCalcLineSpatialIDs06(t *testing.T) {
 		consts.OrthCrs,
 	)
 	//初期化用入力パラメータ
-	startOrth := spatial.Point3{crsPoints[0].X, crsPoints[0].Y, crsPoints[0].Alt}
-	endOrth := spatial.Point3{crsPoints[1].X, crsPoints[1].Y, crsPoints[1].Alt}
+	startOrth := spatial.Point3{X: crsPoints[0].X, Y: crsPoints[0].Y, Z: crsPoints[0].Alt}
+	endOrth := spatial.Point3{X: crsPoints[1].X, Y: crsPoints[1].Y, Z: crsPoints[1].Alt}
 	radius := 2.0
 	hZoom := int64(36)
 	vZoom := int64(25)
@@ -1043,8 +1043,8 @@ func TestCalcLineSpatialIDs07(t *testing.T) {
 		consts.OrthCrs,
 	)
 	//初期化用入力パラメータ
-	startOrth := spatial.Point3{crsPoints[0].X, crsPoints[0].Y, crsPoints[0].Alt}
-	endOrth := spatial.Point3{crsPoints[1].X, crsPoints[1].Y, crsPoints[1].Alt}
+	startOrth := spatial.Point3{X: crsPoints[0].X, Y: crsPoints[0].Y, Z: crsPoints[0].Alt}
+	endOrth := spatial.Point3{X: crsPoints[1].X, Y: crsPoints[1].Y, Z: crsPoints[1].Alt}
 	radius := 2.0
 	hZoom := int64(26)
 	vZoom := int64(27)
@@ -1062,9 +1062,9 @@ func TestCalcLineSpatialIDs07(t *testing.T) {
 	startRadiusAxis := spatial.NewVectorFromPoints(startOrth, endOrth).Unit().Scale(radius)
 	endRadiusAxis := spatial.NewVectorFromPoints(startOrth, endOrth).Unit().Scale(-1 * radius)
 	newStart := startOrth.Translate(startRadiusAxis)
-	factorStart := spatial.Point3{newStart.X, newStart.Y, newStart.Z}
+	factorStart := spatial.Point3{X: newStart.X, Y: newStart.Y, Z: newStart.Z}
 	newEnd := endOrth.Translate(endRadiusAxis)
-	factorEnd := spatial.Point3{newEnd.X, newEnd.Y, newEnd.Z}
+	factorEnd := spatial.Point3{X: newEnd.X, Y: newEnd.Y, Z: newEnd.Z}
 	// 【直交座標空間⇒緯度経度空間】始点終点の座標
 	projectesStart := convertSpatialProjectionPoint(factorStart)
 	projectesEnd := convertSpatialProjectionPoint(factorEnd)
@@ -1133,8 +1133,8 @@ func TestCalcLineSpatialIDs08(t *testing.T) {
 		consts.OrthCrs,
 	)
 	//初期化用入力パラメータ
-	startOrth := spatial.Point3{crsPoints[0].X, crsPoints[0].Y, crsPoints[0].Alt}
-	endOrth := spatial.Point3{crsPoints[1].X, crsPoints[1].Y, crsPoints[1].Alt}
+	startOrth := spatial.Point3{X: crsPoints[0].X, Y: crsPoints[0].Y, Z: crsPoints[0].Alt}
+	endOrth := spatial.Point3{X: crsPoints[1].X, Y: crsPoints[1].Y, Z: crsPoints[1].Alt}
 	radius := 2.0
 	hZoom := int64(27)
 	vZoom := int64(26)
@@ -1154,9 +1154,9 @@ func TestCalcLineSpatialIDs08(t *testing.T) {
 	startRadiusAxis := spatial.NewVectorFromPoints(startOrth, endOrth).Unit().Scale(radius * factor)
 	endRadiusAxis := spatial.NewVectorFromPoints(startOrth, endOrth).Unit().Scale(-1 * radius * factor)
 	newStart := startOrth.Translate(startRadiusAxis)
-	factorStart := spatial.Point3{newStart.X, newStart.Y, newStart.Z / factor}
+	factorStart := spatial.Point3{X: newStart.X, Y: newStart.Y, Z: newStart.Z / factor}
 	newEnd := endOrth.Translate(endRadiusAxis)
-	factorEnd := spatial.Point3{newEnd.X, newEnd.Y, newEnd.Z / factor}
+	factorEnd := spatial.Point3{X: newEnd.X, Y: newEnd.Y, Z: newEnd.Z / factor}
 	// 【直交座標空間⇒緯度経度空間】始点終点の座標
 	projectesStart := convertSpatialProjectionPoint(factorStart)
 	projectesEnd := convertSpatialProjectionPoint(factorEnd)
@@ -1227,8 +1227,8 @@ func TestCalcLineSpatialIDs09(t *testing.T) {
 		consts.OrthCrs,
 	)
 	//初期化用入力パラメータ
-	startOrth := spatial.Point3{crsPoints[0].X, crsPoints[0].Y, crsPoints[0].Alt}
-	endOrth := spatial.Point3{crsPoints[1].X, crsPoints[1].Y, crsPoints[1].Alt}
+	startOrth := spatial.Point3{X: crsPoints[0].X, Y: crsPoints[0].Y, Z: crsPoints[0].Alt}
+	endOrth := spatial.Point3{X: crsPoints[1].X, Y: crsPoints[1].Y, Z: crsPoints[1].Alt}
 	radius := 2.0
 	hZoom := int64(36)
 	vZoom := int64(25)
@@ -1289,8 +1289,8 @@ func TestCalcLineSpatialIDs10(t *testing.T) {
 		consts.OrthCrs,
 	)
 	//初期化用入力パラメータ
-	startOrth := spatial.Point3{crsPoints[0].X, crsPoints[0].Y, crsPoints[0].Alt}
-	endOrth := spatial.Point3{crsPoints[1].X, crsPoints[1].Y, crsPoints[1].Alt}
+	startOrth := spatial.Point3{X: crsPoints[0].X, Y: crsPoints[0].Y, Z: crsPoints[0].Alt}
+	endOrth := spatial.Point3{X: crsPoints[1].X, Y: crsPoints[1].Y, Z: crsPoints[1].Alt}
 	radius := 2.0
 	hZoom := int64(26)
 	vZoom := int64(27)
@@ -1345,8 +1345,8 @@ func TestCalcLineSpatialIDs10(t *testing.T) {
 //   - 全方向の移動数が1であるため、全空間IDの数が27であること
 func TestCalcAllSpatialIDs01(t *testing.T) {
 	//カプセルオブジェクト作成(任意値)
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{-20, -32, -30}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: -20, Y: -32, Z: -30}
 	radius := 1.0
 	hZoom := int64(25)
 	vZoom := int64(25)
@@ -1396,8 +1396,8 @@ func TestCalcAllSpatialIDs01(t *testing.T) {
 //   - 全空間IDの数が0であること
 func TestCalcAllSpatialIDs02(t *testing.T) {
 	//カプセルオブジェクト作成(任意値)
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{-20, -32, -30}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: -20, Y: -32, Z: -30}
 	radius := 1.0
 	hZoom := int64(25)
 	vZoom := int64(25)
@@ -1439,8 +1439,8 @@ func TestCalcAllSpatialIDs02(t *testing.T) {
 //   - 全方向の移動数が1(切り上げ)であるため、全空間IDの数が27であること
 func TestCalcAllSpatialIDs03(t *testing.T) {
 	//カプセルオブジェクト作成(任意値)
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{-20, -32, -30}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: -20, Y: -32, Z: -30}
 	radius := 1.0
 	hZoom := int64(25)
 	vZoom := int64(25)
@@ -1490,8 +1490,8 @@ func TestCalcAllSpatialIDs03(t *testing.T) {
 //   - 全方向の移動数が1であるため、全空間IDの数が36であること
 func TestCalcAllSpatialIDs04(t *testing.T) {
 	//カプセルオブジェクト作成(任意値)
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{-20, -32, -30}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: -20, Y: -32, Z: -30}
 	radius := 1.0
 	hZoom := int64(25)
 	vZoom := int64(25)
@@ -1548,8 +1548,8 @@ func TestCalcAllSpatialIDs04(t *testing.T) {
 //   - 全方向の移動数が1であるため、全空間IDの数が46であること
 func TestCalcAllSpatialIDs05(t *testing.T) {
 	//カプセルオブジェクト作成(任意値)
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{-20, -32, -30}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: -20, Y: -32, Z: -30}
 	radius := 1.0
 	hZoom := int64(25)
 	vZoom := int64(25)
@@ -1606,8 +1606,8 @@ func TestCalcAllSpatialIDs05(t *testing.T) {
 //   - 全方向の移動数が1であるため、全空間IDの数が125であること
 func TestCalcAllSpatialIDs06(t *testing.T) {
 	//カプセルオブジェクト作成(任意値)
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{-20, -32, -30}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: -20, Y: -32, Z: -30}
 	radius := 2.0
 	hZoom := int64(25)
 	vZoom := int64(25)
@@ -1657,8 +1657,8 @@ func TestCalcAllSpatialIDs06(t *testing.T) {
 //   - 全方向の移動数が1であるため、全空間IDの数が125であること
 func TestCalcAllSpatialIDs07(t *testing.T) {
 	//カプセルオブジェクト作成(任意値)
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{-20, -32, -30}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: -20, Y: -32, Z: -30}
 	radius := 1.0
 	hZoom := int64(25)
 	vZoom := int64(25)
@@ -1710,8 +1710,8 @@ func TestCalcAllSpatialIDs07(t *testing.T) {
 //   - 全方向の移動数が1であるため、全空間IDの数が45であること
 func TestCalcAllSpatialIDs08(t *testing.T) {
 	//カプセルオブジェクト作成(任意値)
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{-20, -32, -30}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: -20, Y: -32, Z: -30}
 	radius := 1.0
 	hZoom := int64(25)
 	vZoom := int64(25)
@@ -1762,8 +1762,8 @@ func TestCalcAllSpatialIDs08(t *testing.T) {
 //   - 内部空間IDのリストが期待値と完全に一致すること
 func TestCalcIncludeSpatialIDs01(t *testing.T) {
 	//カプセルオブジェクト作成(任意値)
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{-20, -32, -30}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: -20, Y: -32, Z: -30}
 	radius := 3.0
 	hZoom := int64(25)
 	vZoom := int64(25)
@@ -1834,8 +1834,8 @@ func TestCalcIncludeSpatialIDs01(t *testing.T) {
 //   - 内部空間IDの数が0であること
 func TestCalcIncludeSpatialIDs02(t *testing.T) {
 	//カプセルオブジェクト作成(任意値)
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{-20, -32, -30}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: -20, Y: -32, Z: -30}
 	radius := 3.0
 	hZoom := int64(25)
 	vZoom := int64(25)
@@ -1878,8 +1878,8 @@ func TestCalcIncludeSpatialIDs02(t *testing.T) {
 //   - 全方向の移動数が1であるため、内部空間IDの数が27であること
 func TestCalcIncludeSpatialIDs03(t *testing.T) {
 	//カプセルオブジェクト作成(任意値)
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{-20, -32, -30}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: -20, Y: -32, Z: -30}
 	radius := 8.0
 	hZoom := int64(25)
 	vZoom := int64(25)
@@ -1929,8 +1929,8 @@ func TestCalcIncludeSpatialIDs03(t *testing.T) {
 //   - 全方向の移動数が1であるため、内部空間IDの数が36であること
 func TestCalcIncludeSpatialIDs04(t *testing.T) {
 	//カプセルオブジェクト作成(任意値)
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{-20, -32, -30}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: -20, Y: -32, Z: -30}
 	radius := 3.0
 	hZoom := int64(25)
 	vZoom := int64(25)
@@ -1987,8 +1987,8 @@ func TestCalcIncludeSpatialIDs04(t *testing.T) {
 //   - 内部空間IDの数が46であること
 func TestCalcIncludeSpatialIDs05(t *testing.T) {
 	//カプセルオブジェクト作成(任意値)
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{-20, -32, -30}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: -20, Y: -32, Z: -30}
 	radius := 4.0
 	hZoom := int64(25)
 	vZoom := int64(25)
@@ -2045,8 +2045,8 @@ func TestCalcIncludeSpatialIDs05(t *testing.T) {
 //   - 全方向の移動数が2であるため、内部空間IDの数が125であること
 func TestCalcIncludeSpatialIDs06(t *testing.T) {
 	//カプセルオブジェクト作成(任意値)
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{-20, -32, -30}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: -20, Y: -32, Z: -30}
 	radius := 5.0
 	hZoom := int64(25)
 	vZoom := int64(25)
@@ -2096,8 +2096,8 @@ func TestCalcIncludeSpatialIDs06(t *testing.T) {
 //   - 全方向の移動数が2であるため、内部空間IDの数が125であること
 func TestCalcIncludeSpatialIDs07(t *testing.T) {
 	//カプセルオブジェクト作成(任意値)
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{-20, -32, -30}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: -20, Y: -32, Z: -30}
 	radius := 2.5
 	hZoom := int64(25)
 	vZoom := int64(25)
@@ -2149,8 +2149,8 @@ func TestCalcIncludeSpatialIDs07(t *testing.T) {
 //   - 内部空間IDの数が315であること
 func TestCalcIncludeSpatialIDs08(t *testing.T) {
 	//カプセルオブジェクト作成(任意値)
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{-20, -32, -30}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: -20, Y: -32, Z: -30}
 	radius := 3.0
 	hZoom := int64(25)
 	vZoom := int64(25)
@@ -2203,8 +2203,8 @@ func TestCalcIncludeSpatialIDs08(t *testing.T) {
 //   - 全方向の移動数が0であるため、内部空間IDの数が0であること
 func TestCalcIncludeSpatialIDs09(t *testing.T) {
 	//カプセルオブジェクト作成(任意値)
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{-20, -32, -30}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: -20, Y: -32, Z: -30}
 	radius := 2.0
 	hZoom := int64(25)
 	vZoom := int64(25)
@@ -2338,9 +2338,7 @@ func TestCalcCollideSpatialIDs01(t *testing.T) {
 	)
 
 	// 全空間IDを設定
-	for _, x := range allSpatialIds {
-		capsule.allSpatialIDs = append(capsule.allSpatialIDs, x)
-	}
+	capsule.allSpatialIDs = append(capsule.allSpatialIDs, allSpatialIds...)
 
 	// テスト対象呼び出し
 	capsule.calcCollideSpatialIDs()
@@ -2464,9 +2462,7 @@ func TestCalcCollideSpatialIDs02(t *testing.T) {
 	)
 
 	// 全空間IDを設定
-	for _, x := range allSpatialIds {
-		capsule.allSpatialIDs = append(capsule.allSpatialIDs, x)
-	}
+	capsule.allSpatialIDs = append(capsule.allSpatialIDs, allSpatialIds...)
 
 	// テスト対象呼び出し
 	capsule.calcCollideSpatialIDs()
@@ -2590,9 +2586,7 @@ func TestCalcCollideSpatialIDs03(t *testing.T) {
 	)
 
 	// 全空間IDを設定
-	for _, x := range allSpatialIds {
-		capsule.allSpatialIDs = append(capsule.allSpatialIDs, x)
-	}
+	capsule.allSpatialIDs = append(capsule.allSpatialIDs, allSpatialIds...)
 
 	// テスト対象呼び出し
 	capsule.calcCollideSpatialIDs()
@@ -2646,8 +2640,8 @@ func TestCalcValidSpatialIDs01(t *testing.T) {
 		consts.OrthCrs,
 	)
 	//初期化用入力パラメータ
-	startOrth := spatial.Point3{crsPoints[0].X, crsPoints[0].Y, crsPoints[0].Alt}
-	endOrth := spatial.Point3{crsPoints[1].X, crsPoints[1].Y, crsPoints[1].Alt}
+	startOrth := spatial.Point3{X: crsPoints[0].X, Y: crsPoints[0].Y, Z: crsPoints[0].Alt}
+	endOrth := spatial.Point3{X: crsPoints[1].X, Y: crsPoints[1].Y, Z: crsPoints[1].Alt}
 	radius := 2.0
 	hZoom := int64(27)
 	vZoom := int64(26)
@@ -2725,8 +2719,8 @@ func TestCalcValidSpatialIDs02(t *testing.T) {
 		consts.OrthCrs,
 	)
 	//初期化用入力パラメータ
-	startOrth := spatial.Point3{crsPoints[0].X, crsPoints[0].Y, crsPoints[0].Alt}
-	endOrth := spatial.Point3{crsPoints[1].X, crsPoints[1].Y, crsPoints[1].Alt}
+	startOrth := spatial.Point3{X: crsPoints[0].X, Y: crsPoints[0].Y, Z: crsPoints[0].Alt}
+	endOrth := spatial.Point3{X: crsPoints[1].X, Y: crsPoints[1].Y, Z: crsPoints[1].Alt}
 	radius := 2.0
 	hZoom := int64(27)
 	vZoom := int64(26)
@@ -2799,8 +2793,8 @@ func TestCalcValidSpatialIDs03(t *testing.T) {
 	expectErr := "InputValueError,入力チェックエラー"
 
 	//入力パラメータ
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{-20, -32, -30}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: -20, Y: -32, Z: -30}
 	radius := 2.0
 	hZoom := int64(-1)
 	vZoom := int64(25)

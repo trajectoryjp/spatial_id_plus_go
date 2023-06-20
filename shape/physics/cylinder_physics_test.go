@@ -25,8 +25,8 @@ import (
 func TestNewCylinderPhysics01(t *testing.T) {
 	//入力値
 	radius := 4.0
-	start := spatial.Point3{1, 2, 3}
-	end := spatial.Point3{5, 6, 7}
+	start := spatial.Point3{X: 1, Y: 2, Z: 3}
+	end := spatial.Point3{X: 5, Y: 6, Z: 7}
 
 	//　戻り値として期待される円柱用物理オブジェクトの型のポインタ
 	expectP := &CylinderPhysics{}
@@ -44,7 +44,7 @@ func TestNewCylinderPhysics01(t *testing.T) {
 	body.SetPosition(ode.NewVector3(center.X, center.Y, center.Z))
 	// 傾き設定
 	quat := spatial.RotateBetweenVector(
-		spatial.Vector3{0.0, 0.0, 1.0},
+		spatial.Vector3{X: 0.0, Y: 0.0, Z: 1.0},
 		axis,
 	)
 	body.SetQuaternion(ode.NewQuaternion(quat.W, quat.X, quat.Y, quat.Z))
